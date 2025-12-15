@@ -1,13 +1,93 @@
-<!-- Market Card: OpenAI -->
+<!-- Market Card: Eon -->
 <div class="market-card">
     <div class="flex items-start justify-between mb-4">
         <div class="flex items-center gap-3">
             <div
-                class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-xl font-bold">
-                O</div>
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-xl font-bold">
+                E</div>
             <div>
-                <h4 class="font-semibold">OpenAI</h4>
-                <span class="text-xs text-gray-500">AI • Series F</span>
+                <h4 class="font-semibold">Eon</h4>
+                <span class="text-xs text-gray-500">Cloud Data Management • Series D</span>
+            </div>
+        </div>
+        <span class="px-2 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400">Active</span>
+    </div>
+    <div class="crunchbase-badge mb-4">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        Verified by Crunchbase
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Dec 2025</span>
+        </div>
+        <div class="data-item"><span class="text-gray-500">Total Raised</span><span
+                class="font-medium text-teal-400">$500M</span></div>
+        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$4B</span></div>
+        <div class="data-item"><span class="text-gray-500">Likelihood</span><span
+                class="font-medium text-violet-400">85%</span></div>
+    </div>
+    <p class="text-sm text-gray-400 mb-4">Will Eon acquire a competitor by Q2 2026?</p>
+    <div class="flex gap-2">
+        <button hx-post="/api/bet" hx-vals='{"market": "eon", "position": "yes"}'
+            class="flex-1 py-2.5 rounded-xl bg-teal-500/20 text-teal-400 font-medium hover:bg-teal-500/30 transition-colors">YES
+            85¢</button>
+        <button hx-post="/api/bet" hx-vals='{"market": "eon", "position": "no"}'
+            class="flex-1 py-2.5 rounded-xl bg-red-500/20 text-red-400 font-medium hover:bg-red-500/30 transition-colors">NO
+            15¢</button>
+    </div>
+</div>
+
+<!-- Market Card: Serval -->
+<div class="market-card">
+    <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-xl font-bold">
+                S</div>
+            <div>
+                <h4 class="font-semibold">Serval</h4>
+                <span class="text-xs text-gray-500">AI/IT Service Management • Series B</span>
+            </div>
+        </div>
+        <span class="px-2 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400">Active</span>
+    </div>
+    <div class="crunchbase-badge mb-4">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        Verified by Crunchbase
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Dec 2025</span>
+        </div>
+        <div class="data-item"><span class="text-gray-500">Total Raised</span><span
+                class="font-medium text-teal-400">$127M</span></div>
+        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$1B</span></div>
+        <div class="data-item"><span class="text-gray-500">Likelihood</span><span
+                class="font-medium text-violet-400">72%</span></div>
+    </div>
+    <p class="text-sm text-gray-400 mb-4">Will Serval launch a new product line by Q2 2026?</p>
+    <div class="flex gap-2">
+        <button
+            class="flex-1 py-2.5 rounded-xl bg-teal-500/20 text-teal-400 font-medium hover:bg-teal-500/30 transition-colors">YES
+            72¢</button>
+        <button
+            class="flex-1 py-2.5 rounded-xl bg-red-500/20 text-red-400 font-medium hover:bg-red-500/30 transition-colors">NO
+            28¢</button>
+    </div>
+</div>
+
+<!-- Market Card: PolyAI -->
+<div class="market-card">
+    <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-xl font-bold">
+                P</div>
+            <div>
+                <h4 class="font-semibold">PolyAI</h4>
+                <span class="text-xs text-gray-500">Conversational AI • Series D</span>
             </div>
         </div>
         <span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-400">🔥 Hot</span>
@@ -19,95 +99,15 @@
         Verified by Crunchbase
     </div>
     <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Oct 2024</span>
+        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Dec 2025</span>
         </div>
         <div class="data-item"><span class="text-gray-500">Total Raised</span><span
-                class="font-medium text-teal-400">$13.5B</span></div>
-        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$157B</span></div>
-        <div class="data-item"><span class="text-gray-500">Likelihood</span><span
-                class="font-medium text-violet-400">85%</span></div>
-    </div>
-    <p class="text-sm text-gray-400 mb-4">Will OpenAI raise Series G by Q2 2025?</p>
-    <div class="flex gap-2">
-        <button hx-post="/api/bet" hx-vals='{"market": "openai", "position": "yes"}'
-            class="flex-1 py-2.5 rounded-xl bg-teal-500/20 text-teal-400 font-medium hover:bg-teal-500/30 transition-colors">YES
-            85¢</button>
-        <button hx-post="/api/bet" hx-vals='{"market": "openai", "position": "no"}'
-            class="flex-1 py-2.5 rounded-xl bg-red-500/20 text-red-400 font-medium hover:bg-red-500/30 transition-colors">NO
-            15¢</button>
-    </div>
-</div>
-
-<!-- Market Card: SpaceX -->
-<div class="market-card">
-    <div class="flex items-start justify-between mb-4">
-        <div class="flex items-center gap-3">
-            <div
-                class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-xl font-bold">
-                X</div>
-            <div>
-                <h4 class="font-semibold">SpaceX</h4>
-                <span class="text-xs text-gray-500">Aerospace • Series N</span>
-            </div>
-        </div>
-        <span class="px-2 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400">Active</span>
-    </div>
-    <div class="crunchbase-badge mb-4">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        Verified by Crunchbase
-    </div>
-    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Dec 2024</span>
-        </div>
-        <div class="data-item"><span class="text-gray-500">Total Raised</span><span
-                class="font-medium text-teal-400">$9.9B</span></div>
-        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$350B</span></div>
-        <div class="data-item"><span class="text-gray-500">Likelihood</span><span
-                class="font-medium text-violet-400">72%</span></div>
-    </div>
-    <p class="text-sm text-gray-400 mb-4">Will SpaceX raise again by Q3 2025?</p>
-    <div class="flex gap-2">
-        <button
-            class="flex-1 py-2.5 rounded-xl bg-teal-500/20 text-teal-400 font-medium hover:bg-teal-500/30 transition-colors">YES
-            72¢</button>
-        <button
-            class="flex-1 py-2.5 rounded-xl bg-red-500/20 text-red-400 font-medium hover:bg-red-500/30 transition-colors">NO
-            28¢</button>
-    </div>
-</div>
-
-<!-- Market Card: Databricks -->
-<div class="market-card">
-    <div class="flex items-start justify-between mb-4">
-        <div class="flex items-center gap-3">
-            <div
-                class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-xl font-bold">
-                D</div>
-            <div>
-                <h4 class="font-semibold">Databricks</h4>
-                <span class="text-xs text-gray-500">Data/AI • Series J</span>
-            </div>
-        </div>
-        <span class="px-2 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400">Active</span>
-    </div>
-    <div class="crunchbase-badge mb-4">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        Verified by Crunchbase
-    </div>
-    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-        <div class="data-item"><span class="text-gray-500">Last Funding</span><span class="font-medium">Dec 2024</span>
-        </div>
-        <div class="data-item"><span class="text-gray-500">Total Raised</span><span
-                class="font-medium text-teal-400">$4.2B</span></div>
-        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$62B</span></div>
+                class="font-medium text-teal-400">$206M</span></div>
+        <div class="data-item"><span class="text-gray-500">Valuation</span><span class="font-medium">$750M</span></div>
         <div class="data-item"><span class="text-gray-500">Likelihood</span><span
                 class="font-medium text-violet-400">68%</span></div>
     </div>
-    <p class="text-sm text-gray-400 mb-4">Will Databricks IPO by Q4 2025?</p>
+    <p class="text-sm text-gray-400 mb-4">Will PolyAI reach $1B valuation by Q2 2026?</p>
     <div class="flex gap-2">
         <button
             class="flex-1 py-2.5 rounded-xl bg-teal-500/20 text-teal-400 font-medium hover:bg-teal-500/30 transition-colors">YES
