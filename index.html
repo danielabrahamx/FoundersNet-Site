@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoundersNet | Bet on the Future of Startups</title>
+    <meta name="description"
+        content="The closest thing to trading private company shares. Predict fundraising outcomes on Algorand, Solana, and Movement, verified by real-time Crunchbase data.">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Outfit - Curved, geometric, futuristic font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        violet: { 400: '#a78bfa', 500: '#8B5CF6', 600: '#7C3AED', 700: '#6D28D9' },
+                        teal: { 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488' },
+                        crunchbase: { blue: '#0288D1', light: '#03A9F4' },
+                        electric: { blue: '#60a5fa' }
+                    },
+                    fontFamily: { outfit: ['Outfit', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-outfit bg-[#0a0e1a] text-white antialiased overflow-x-hidden">
+    <!-- Ambient Background Orbs -->
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-br from-violet-500 via-violet-600 to-teal-500 flex items-center justify-center shadow-lg shadow-violet-500/20">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                </div>
+                <span
+                    class="text-xl font-bold bg-gradient-to-r from-white via-violet-200 to-teal-200 bg-clip-text text-transparent tracking-tight">FoundersNet</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#markets"
+                    class="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide">Markets</a>
+                <a href="#how-it-works"
+                    class="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide">How
+                    It Works</a>
+                <a href="#features"
+                    class="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide">Features</a>
+                <a href="#team"
+                    class="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide">Team</a>
+                <button onclick="openModal()"
+                    class="btn-primary px-6 py-2.5 bg-gradient-to-r from-violet-600 to-violet-500 rounded-xl font-medium text-sm hover:shadow-xl hover:shadow-violet-500/25 transition-all duration-500 hover:-translate-y-0.5">
+                    Launch App
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="data-streams"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.06] mb-10 backdrop-blur-xl">
+                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse shadow-lg shadow-teal-400/50"></span>
+                <span class="text-sm text-gray-300 font-medium tracking-wide">Live on Algorand, Solana & Movement</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight">
+                <span class="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">Bet on the
+                    Future</span>
+                <br>
+                <span
+                    class="bg-gradient-to-r from-violet-400 via-violet-300 to-teal-400 bg-clip-text text-transparent">of
+                    Startups</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                The closest thing to trading private company shares. Predict fundraising outcomes on
+                <span class="text-teal-400 font-medium">Algorand</span>,
+                <span class="text-violet-400 font-medium">Solana</span>, and
+                <span class="text-electric-blue font-medium">Movement</span>,
+                verified by real-time Crunchbase data.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openModal()"
+                    class="group btn-primary px-10 py-4 bg-gradient-to-r from-violet-600 via-violet-500 to-violet-600 rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 flex items-center justify-center gap-3">
+                    Launch App
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+                <button onclick="openModal()"
+                    class="px-10 py-4 bg-white/[0.03] border border-white/[0.08] rounded-2xl font-semibold text-lg hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-500 backdrop-blur-xl">
+                    View Live Markets
+                </button>
+            </div>
+            <div class="mt-20 flex justify-center items-center gap-10 opacity-50">
+                <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="Solana"
+                    class="h-8 grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110">
+                <img src="https://cryptologos.cc/logos/algorand-algo-logo.svg" alt="Algorand"
+                    class="h-8 grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110">
+                <!-- Movement Logo -->
+                <svg class="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110"
+                    viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="14" stroke="#60a5fa" stroke-width="2.5" fill="none" />
+                    <path d="M10 16 L16 10 L22 16 L16 22 Z" fill="#60a5fa" />
+                    <text x="38" y="22" font-family="Outfit, sans-serif" font-size="14" font-weight="600"
+                        fill="#60a5fa">Movement</text>
+                </svg>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0a0e1a] to-transparent"></div>
+    </section>
+
+    <div id="main-content">
+        <!-- Value Proposition Cards -->
+        <section class="py-28 relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="value-card group">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/15 to-violet-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-7 h-7 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 tracking-tight">Multi-Chain Access</h3>
+                        <p class="text-gray-400 leading-relaxed font-light">Trade seamlessly on Algorand, Solana, or
+                            Movement. Pick the chain with the best fees or liquidity.</p>
+                    </div>
+                    <div class="value-card group">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-crunchbase-blue/15 to-crunchbase-light/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-7 h-7 text-crunchbase-light" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 tracking-tight">Powered by Crunchbase</h3>
+                        <p class="text-gray-400 leading-relaxed font-light">Markets are created and resolved using
+                            official Crunchbase API data, ensuring trust and accuracy.</p>
+                    </div>
+                    <div class="value-card group">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500/15 to-teal-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 tracking-tight">Private Market Exposure</h3>
+                        <p class="text-gray-400 leading-relaxed font-light">Access startup upside without being an
+                            accredited investor. Trade predictions on any funding round.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Market Card Demo -->
+        <section id="markets" class="py-28 relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-5 tracking-tight">Live Prediction Markets</h2>
+                    <p class="text-gray-400 text-lg font-light">Real-time startup data from Crunchbase</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="markets-container"
+                    hx-get="/partials/market-cards.html" hx-trigger="load" hx-swap="innerHTML">
+                    <!-- Market cards loaded via HTMX -->
+                    <div class="market-card">
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-xl font-bold shadow-lg shadow-orange-500/20">
+                                    S</div>
+                                <div>
+                                    <h4 class="font-semibold tracking-tight">Stripe</h4>
+                                    <span class="text-xs text-gray-500 font-medium">Fintech • Series I</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 text-xs font-semibold rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/20">Active</span>
+                        </div>
+                        <div class="crunchbase-badge mb-5">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                            Verified by Crunchbase
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-5 text-sm">
+                            <div class="data-item"><span class="text-gray-500 text-xs">Last Funding</span><span
+                                    class="font-medium">Mar 2023</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Total Raised</span><span
+                                    class="font-medium text-teal-400">$8.7B</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Valuation</span><span
+                                    class="font-medium">$50B</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Likelihood</span><span
+                                    class="font-medium text-violet-400">78%</span></div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-5 font-light">Will Stripe raise Series I by Q2 2025?</p>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-teal-500/10 text-teal-400 font-semibold hover:bg-teal-500/20 transition-all duration-300 border border-teal-500/10 hover:border-teal-500/20">YES
+                                78¢</button>
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-red-500/10 text-red-400 font-semibold hover:bg-red-500/20 transition-all duration-300 border border-red-500/10 hover:border-red-500/20">NO
+                                22¢</button>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-xl font-bold shadow-lg shadow-green-500/20">
+                                    F</div>
+                                <div>
+                                    <h4 class="font-semibold tracking-tight">Figma</h4>
+                                    <span class="text-xs text-gray-500 font-medium">Design • Series E</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 text-xs font-semibold rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/20">Active</span>
+                        </div>
+                        <div class="crunchbase-badge mb-5">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                            Verified by Crunchbase
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-5 text-sm">
+                            <div class="data-item"><span class="text-gray-500 text-xs">Last Funding</span><span
+                                    class="font-medium">Jun 2021</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Total Raised</span><span
+                                    class="font-medium text-teal-400">$332M</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Valuation</span><span
+                                    class="font-medium">$10B</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Likelihood</span><span
+                                    class="font-medium text-violet-400">45%</span></div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-5 font-light">Will Figma raise new funding by Q4 2025?</p>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-teal-500/10 text-teal-400 font-semibold hover:bg-teal-500/20 transition-all duration-300 border border-teal-500/10 hover:border-teal-500/20">YES
+                                45¢</button>
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-red-500/10 text-red-400 font-semibold hover:bg-red-500/20 transition-all duration-300 border border-red-500/10 hover:border-red-500/20">NO
+                                55¢</button>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xl font-bold shadow-lg shadow-blue-500/20">
+                                    A</div>
+                                <div>
+                                    <h4 class="font-semibold tracking-tight">Anthropic</h4>
+                                    <span class="text-xs text-gray-500 font-medium">AI • Series D</span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/20">Hot</span>
+                        </div>
+                        <div class="crunchbase-badge mb-5">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                            Verified by Crunchbase
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-5 text-sm">
+                            <div class="data-item"><span class="text-gray-500 text-xs">Last Funding</span><span
+                                    class="font-medium">Dec 2024</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Total Raised</span><span
+                                    class="font-medium text-teal-400">$7.3B</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Valuation</span><span
+                                    class="font-medium">$18B</span></div>
+                            <div class="data-item"><span class="text-gray-500 text-xs">Likelihood</span><span
+                                    class="font-medium text-violet-400">92%</span></div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-5 font-light">Will Anthropic raise Series E by Q1 2025?</p>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-teal-500/10 text-teal-400 font-semibold hover:bg-teal-500/20 transition-all duration-300 border border-teal-500/10 hover:border-teal-500/20">YES
+                                92¢</button>
+                            <button
+                                class="flex-1 py-3 rounded-xl bg-red-500/10 text-red-400 font-semibold hover:bg-red-500/20 transition-all duration-300 border border-red-500/10 hover:border-red-500/20">NO
+                                8¢</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-28 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/[0.05] to-transparent"></div>
+            <div class="max-w-7xl mx-auto px-6 relative">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-5 tracking-tight">How It Works</h2>
+                    <p class="text-gray-400 text-lg font-light">Start trading in four simple steps</p>
+                </div>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 tracking-tight">Connect Wallet</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Connect Phantom, Pera, Razor, or any
+                            compatible wallet.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-crunchbase-blue/10 flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-crunchbase-light" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 tracking-tight">Analyze Data</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Review funding history and
+                            "Likelihood to Raise" scores from Crunchbase.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 tracking-tight">Place Your Bet</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Bet YES or NO using USDC on your
+                            preferred chain.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-electric-blue/10 flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-electric-blue" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 tracking-tight">Automated Resolution</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Smart contracts trigger payouts when
+                            Crunchbase updates funding status.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-28 relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-5 tracking-tight">Powerful Features</h2>
+                    <p class="text-gray-400 text-lg font-light">Everything you need to trade startup predictions</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-crunchbase-blue/15"><svg class="w-6 h-6 text-crunchbase-light"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2 tracking-tight">Live Data Feeds</h3>
+                            <p class="text-gray-400 font-light leading-relaxed">Real-time company profiles, news, and
+                                funding round alerts via Crunchbase API.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-violet-500/15"><svg class="w-6 h-6 text-violet-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2 tracking-tight">Cross-Chain Liquidity</h3>
+                            <p class="text-gray-400 font-light leading-relaxed">Trade on the chain with the best fees or
+                                liquidity—Algorand, Solana, or Movement.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-teal-500/15"><svg class="w-6 h-6 text-teal-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2 tracking-tight">Oracle Verification</h3>
+                            <p class="text-gray-400 font-light leading-relaxed">Market outcomes settled based on
+                                official Crunchbase filings—not opinions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-electric-blue/15"><svg class="w-6 h-6 text-electric-blue"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2 tracking-tight">Portfolio Tracking</h3>
+                            <p class="text-gray-400 font-light leading-relaxed">Track your positions and ROI across all
+                                supported chains in one dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-28 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/[0.05] to-transparent"></div>
+            <div class="max-w-5xl mx-auto px-6 relative">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-5 tracking-tight">Meet the Founders</h2>
+                    <p class="text-gray-400 text-lg font-light">The team building the future of startup investing</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Daniel Abraham -->
+                    <div class="team-card">
+                        <img src="daniel.jpg" alt="Daniel Abraham" class="team-avatar">
+                        <div class="team-role">CEO</div>
+                        <h3 class="text-2xl font-bold mb-3 tracking-tight">Daniel Abraham</h3>
+                        <p class="text-gray-400 leading-relaxed font-light mb-6">
+                            Daniel studied actuarial science and worked in cyber insurance after founding a
+                            data-intensive e-commerce platform.
+                        </p>
+                        <div class="team-links">
+                            <a href="https://www.linkedin.com/in/danielabrahamx/" target="_blank"
+                                rel="noopener noreferrer" class="team-link" title="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="mailto:daniel@sibrox.com" class="team-link" title="Email">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Kirill Slavin -->
+                    <div class="team-card">
+                        <img src="kirill.png" alt="Kirill Slavin" class="team-avatar">
+                        <div class="team-role">CPO</div>
+                        <h3 class="text-2xl font-bold mb-3 tracking-tight">Kirill Slavin</h3>
+                        <p class="text-gray-400 leading-relaxed font-light mb-6">
+                            Kirill studied mathematics, founded a $100m fintech company and also pivoted a cyber
+                            security decacorn from B2C to B2B.
+                        </p>
+                        <div class="team-links">
+                            <a href="https://www.linkedin.com/in/kirillslavin/" target="_blank"
+                                rel="noopener noreferrer" class="team-link" title="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="mailto:kirill@sibrox.com" class="team-link" title="Email">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="py-28 relative">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div
+                    class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-teal-500/[0.08] border border-teal-500/15 mb-10">
+                    <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span class="text-teal-400 font-medium text-sm tracking-wide">Security & Trust</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Built for Trust</h2>
+                <p class="text-gray-400 text-lg mb-16 font-light leading-relaxed">Deployed on battle-tested blockchains
+                    with non-custodial, transparent smart contracts.</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="security-card">
+                        <div class="text-4xl mb-5">🔒</div>
+                        <h4 class="font-semibold mb-2 tracking-tight">Non-Custodial</h4>
+                        <p class="text-gray-400 text-sm font-light">Your keys, your funds. Always.</p>
+                    </div>
+                    <div class="security-card">
+                        <div class="text-4xl mb-5">📊</div>
+                        <h4 class="font-semibold mb-2 tracking-tight">Data Integrity</h4>
+                        <p class="text-gray-400 text-sm font-light">Gold standard Crunchbase data.</p>
+                    </div>
+                    <div class="security-card">
+                        <div class="text-4xl mb-5">⚡</div>
+                        <h4 class="font-semibold mb-2 tracking-tight">Multi-Chain</h4>
+                        <p class="text-gray-400 text-sm font-light">Algorand, Solana & Movement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="subscribe" class="py-28 relative">
+            <div class="max-w-3xl mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Start Trading Startup Futures Today</h2>
+                <p class="text-gray-400 text-lg mb-10 font-light">Get notified when new Series A markets open.</p>
+                <!-- Formspree - View submissions at https://formspree.io/forms -->
+                <form action="https://formspree.io/f/xldqkgow" method="POST" id="subscribe-form"
+                    class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" name="email" placeholder="Enter your email" required
+                        class="flex-1 px-6 py-4 bg-white/[0.03] border border-white/[0.08] rounded-xl focus:outline-none focus:border-violet-500/40 transition-all duration-300 font-light backdrop-blur-xl">
+                    <button type="submit"
+                        class="btn-primary px-10 py-4 bg-gradient-to-r from-violet-600 via-violet-500 to-violet-600 rounded-xl font-semibold hover:shadow-xl hover:shadow-violet-500/25 transition-all duration-500 whitespace-nowrap">Subscribe</button>
+                </form>
+
+                <!-- Success message (shown after submission) -->
+                <div id="subscribe-success"
+                    class="hidden text-center p-6 bg-teal-500/10 border border-teal-500/20 rounded-xl max-w-lg mx-auto">
+                    <svg class="w-12 h-12 text-teal-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-lg font-bold text-teal-400 mb-2">You're on the list!</h3>
+                    <p class="text-gray-400">We'll notify you when FoundersNet launches.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-white/[0.04]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-violet-600 to-teal-500 flex items-center justify-center shadow-lg shadow-violet-500/20">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <span class="font-bold tracking-tight">FoundersNet</span>
+                </div>
+                <div class="flex gap-10 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors duration-300 font-medium">About</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300 font-medium">API Docs</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300 font-medium">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300 font-medium">Privacy</a>
+                </div>
+                <div class="flex gap-3">
+                    <div class="chain-badge">Solana</div>
+                    <div class="chain-badge">Algorand</div>
+                    <div class="chain-badge">Movement</div>
+                    <div class="chain-badge crunchbase">Crunchbase</div>
+                </div>
+            </div>
+            <p class="text-center text-gray-500 text-sm mt-12 font-light">© 2024 FoundersNet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Deploying Soon Modal -->
+    <div id="deployModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+        onclick="closeModal(event)">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <!-- Modal Content -->
+        <div class="relative max-w-md w-full" onclick="event.stopPropagation()">
+            <div class="glass-card p-10 text-center">
+                <!-- Animated Rocket -->
+                <div class="w-24 h-24 mx-auto mb-8 relative">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-teal-500/20 rounded-full animate-pulse">
+                    </div>
+                    <div
+                        class="absolute inset-2 bg-gradient-to-br from-violet-500/10 to-teal-500/10 rounded-full flex items-center justify-center">
+                        <svg class="w-12 h-12 text-violet-400 animate-bounce" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <h3
+                    class="text-3xl font-bold mb-4 tracking-tight bg-gradient-to-r from-violet-400 to-teal-400 bg-clip-text text-transparent">
+                    Deploying Soon
+                </h3>
+
+                <!-- Description -->
+                <p class="text-gray-400 mb-8 leading-relaxed font-light">
+                    We're putting the final touches on FoundersNet. Get ready to trade on the future of startups across
+                    <span class="text-teal-400 font-medium">Algorand</span>,
+                    <span class="text-violet-400 font-medium">Solana</span>, and
+                    <span class="text-electric-blue font-medium">Movement</span>.
+                </p>
+
+                <!-- Progress Indicator -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-xs text-gray-500 mb-2">
+                        <span>Building</span>
+                        <span>Almost there...</span>
+                    </div>
+                    <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full w-4/5 bg-gradient-to-r from-violet-500 to-teal-500 rounded-full relative">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="flex flex-col gap-3">
+                    <a href="#subscribe" onclick="scrollToSubscribe()"
+                        class="btn-primary px-8 py-3.5 bg-gradient-to-r from-violet-600 via-violet-500 to-violet-600 rounded-xl font-semibold hover:shadow-xl hover:shadow-violet-500/25 transition-all duration-500 text-center">
+                        Get Notified at Launch
+                    </a>
+                    <button onclick="closeModal(event)"
+                        class="px-8 py-3 text-gray-400 hover:text-white transition-colors duration-300 font-medium text-sm">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(200%);
+            }
+        }
+
+        .animate-shimmer {
+            animation: shimmer 2s infinite;
+        }
+
+        #deployModal.show {
+            display: flex;
+        }
+    </style>
+
+    <script>
+        function openModal() {
+            const modal = document.getElementById('deployModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('deployModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function scrollToSubscribe() {
+            // Close the modal first
+            closeModal();
+
+            // Scroll to subscribe section after a brief delay
+            setTimeout(() => {
+                const subscribeSection = document.getElementById('subscribe');
+                if (subscribeSection) {
+                    subscribeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Focus the email input after scrolling
+                    setTimeout(() => {
+                        const emailInput = subscribeSection.querySelector('input[type="email"]');
+                        if (emailInput) emailInput.focus();
+                    }, 500);
+                }
+            }, 100);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Handle form submission with AJAX (no page redirect)
+        document.getElementById('subscribe-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            // Show loading state
+            submitBtn.textContent = 'Subscribing...';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide form, show success message
+                    form.classList.add('hidden');
+                    document.getElementById('subscribe-success').classList.remove('hidden');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Show error but still hide form (FormSubmit might work anyway)
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('Thanks for subscribing! You should receive updates soon.');
+                form.classList.add('hidden');
+                document.getElementById('subscribe-success').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>

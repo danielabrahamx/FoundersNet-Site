@@ -1,0 +1,683 @@
+/* FoundersNet - Premium Futuristic Design */
+
+/* ============================================
+   DESIGN TOKENS - Golden Ratio Based
+   φ = 1.618 | 1/φ = 0.618
+   ============================================ */
+:root {
+    /* Golden Ratio Spacing */
+    --space-xs: 0.382rem;
+    --space-sm: 0.618rem;
+    --space-md: 1rem;
+    --space-lg: 1.618rem;
+    --space-xl: 2.618rem;
+    --space-2xl: 4.236rem;
+    --space-3xl: 6.854rem;
+
+    /* Premium Colors */
+    --glass-bg: rgba(15, 20, 35, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.12);
+
+    --accent-violet: #a78bfa;
+    --accent-teal: #2dd4bf;
+    --accent-blue: #60a5fa;
+    --accent-glow: rgba(167, 139, 250, 0.4);
+
+    /* Curves */
+    --radius-sm: 0.618rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.618rem;
+    --radius-xl: 2.618rem;
+    --radius-full: 9999px;
+}
+
+/* ============================================
+   BASE & TYPOGRAPHY
+   ============================================ */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e1a 0%, #0f1629 50%, #0a0e1a 100%);
+    min-height: 100vh;
+}
+
+/* Ambient Background Glow */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 100% 60% at 20% 0%, rgba(139, 92, 246, 0.08), transparent 50%),
+        radial-gradient(ellipse 80% 50% at 80% 20%, rgba(45, 212, 191, 0.06), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(96, 165, 250, 0.05), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================
+   PREMIUM GLASSMORPHISM COMPONENTS
+   ============================================ */
+
+/* Glass Navigation - Frosted Premium */
+.glass-nav {
+    background: rgba(10, 14, 26, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Ultra Glass Card */
+.glass-card {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.02) 50%,
+            rgba(255, 255, 255, 0.04) 100%);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            transparent 100%);
+}
+
+/* ============================================
+   HERO SECTION - Refined Gradients
+   ============================================ */
+.hero-gradient {
+    background:
+        radial-gradient(ellipse 120% 70% at 50% -30%, rgba(139, 92, 246, 0.2), transparent 60%),
+        radial-gradient(ellipse 80% 50% at 90% 30%, rgba(45, 212, 191, 0.1), transparent 50%),
+        radial-gradient(ellipse 80% 50% at 10% 30%, rgba(96, 165, 250, 0.1), transparent 50%),
+        radial-gradient(ellipse 100% 100% at 50% 100%, rgba(15, 23, 42, 0.8), transparent 50%);
+}
+
+/* Sophisticated Data Streams - Subtle particles */
+.data-streams {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.data-streams::before,
+.data-streams::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 150px;
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--accent-violet),
+            transparent);
+    animation: subtleStream 8s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+.data-streams::before {
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.data-streams::after {
+    left: 85%;
+    animation-delay: 4s;
+}
+
+@keyframes subtleStream {
+
+    0%,
+    100% {
+        transform: translateY(-200px) scaleY(0.5);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(50vh) scaleY(1);
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+}
+
+/* Floating Orbs - Premium ambient effect */
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: floatOrb 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.ambient-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(139, 92, 246, 0.15);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.ambient-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(45, 212, 191, 0.1);
+    top: 50%;
+    right: 5%;
+    animation-delay: -7s;
+}
+
+.ambient-orb-3 {
+    width: 350px;
+    height: 350px;
+    background: rgba(96, 165, 250, 0.1);
+    bottom: 10%;
+    left: 30%;
+    animation-delay: -14s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30px, -20px) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-20px, 30px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(20px, 20px) scale(1.02);
+    }
+}
+
+/* ============================================
+   PREMIUM CARDS - Glass morphism variants
+   ============================================ */
+
+/* Value Cards - Hovering glass panels */
+.value-card {
+    background: linear-gradient(165deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.value-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            transparent 40%,
+            rgba(139, 92, 246, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.value-card:hover {
+    border-color: rgba(167, 139, 250, 0.2);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow:
+        0 25px 50px -12px rgba(139, 92, 246, 0.15),
+        0 0 60px -15px rgba(139, 92, 246, 0.1);
+}
+
+.value-card:hover::after {
+    opacity: 1;
+}
+
+/* Market Cards - Premium trading feel */
+.market-card {
+    background: linear-gradient(160deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+.market-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+            rgba(139, 92, 246, 0) 0%,
+            rgba(139, 92, 246, 0.1) 50%,
+            rgba(45, 212, 191, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.market-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(167, 139, 250, 0.15);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+}
+
+.market-card:hover::before {
+    opacity: 1;
+}
+
+/* Crunchbase Badge - Refined */
+.crunchbase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.4rem 0.875rem;
+    background: rgba(2, 136, 209, 0.08);
+    border: 1px solid rgba(2, 136, 209, 0.15);
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #03A9F4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* Data Items - Mini glass panels */
+.data-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    transition: background 0.3s ease;
+}
+
+.data-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================
+   STEP CARDS - Timeline feel
+   ============================================ */
+.step-card {
+    position: relative;
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    background: linear-gradient(175deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-xl);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.step-card:hover {
+    border-color: rgba(167, 139, 250, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.1);
+}
+
+.step-number {
+    position: absolute;
+    top: -0.875rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.75rem;
+    height: 1.75rem;
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+/* ============================================
+   FEATURE CARDS - Horizontal glass
+   ============================================ */
+.feature-card {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-lg);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.feature-card:hover {
+    border-color: rgba(167, 139, 250, 0.12);
+    transform: translateX(8px);
+    box-shadow: -8px 0 30px -15px rgba(139, 92, 246, 0.2);
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* ============================================
+   SECURITY CARDS - Trust indicators
+   ============================================ */
+.security-card {
+    padding: var(--space-xl);
+    background: linear-gradient(165deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.security-card:hover {
+    border-color: rgba(45, 212, 191, 0.15);
+    transform: translateY(-4px);
+}
+
+/* ============================================
+   TEAM SECTION - Premium profiles
+   ============================================ */
+.team-card {
+    background: linear-gradient(165deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.team-card:hover {
+    border-color: rgba(167, 139, 250, 0.2);
+    transform: translateY(-8px);
+    box-shadow:
+        0 30px 60px -15px rgba(139, 92, 246, 0.15),
+        0 0 80px -20px rgba(139, 92, 246, 0.1);
+}
+
+.team-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto var(--space-lg);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 0 0 6px rgba(139, 92, 246, 0.1),
+        0 15px 35px -10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.team-card:hover .team-avatar {
+    border-color: rgba(167, 139, 250, 0.3);
+    box-shadow:
+        0 0 0 8px rgba(139, 92, 246, 0.15),
+        0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+}
+
+.team-role {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.35rem 0.875rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(45, 212, 191, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent-violet);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+}
+
+.team-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.team-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    color: #9ca3af;
+    transition: all 0.3s ease;
+}
+
+.team-link:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: var(--accent-violet);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   CHAIN BADGES - Refined
+   ============================================ */
+.chain-badge {
+    padding: 0.4rem 0.875rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.chain-badge:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.chain-badge.crunchbase {
+    background: rgba(2, 136, 209, 0.08);
+    border-color: rgba(2, 136, 209, 0.15);
+    color: #03A9F4;
+}
+
+/* ============================================
+   BUTTONS - Sophisticated hover
+   ============================================ */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   HTMX & FORM STATES
+   ============================================ */
+.htmx-request {
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+
+.htmx-request .htmx-indicator {
+    display: inline-block;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.1),
+        0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE - Mobile optimizations
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --space-xl: 2rem;
+        --space-2xl: 3rem;
+    }
+
+    .hero-gradient {
+        background:
+            radial-gradient(ellipse 150% 80% at 50% -20%, rgba(139, 92, 246, 0.25), transparent 60%);
+    }
+
+    .value-card,
+    .step-card,
+    .feature-card,
+    .team-card {
+        padding: var(--space-lg);
+    }
+
+    .team-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .ambient-orb {
+        display: none;
+    }
+}
+
+/* ============================================
+   SCROLL ANIMATIONS - Subtle reveals
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger delays */
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
